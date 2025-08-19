@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "description": "Paper-tuned PGIRP parameters selected on the public tuning split.",
+  "prediction": {
+    "center_relative_threshold": 0.4,
+    "region_relative_threshold": 0.2,
+    "min_region_size": 120,
+    "max_regions": 4,
+    "level_ratio": 0.25,
+    "core_frac": 0.03
+  }
+}

@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "c2-reg-cls"
+version = "0.2.0"
+description = "C2 vertebra registration and fracture region classification"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "scipy",
+    "scikit-image",
+    "nibabel",
+    "pydicom",
+    "antspyx",
+    "pandas",
+    "matplotlib",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+models = [
+    "opencv-python==4.9.0.80",
+    "torch==2.4.1",
+    "torchvision==0.19.1",
+    "timm==0.9.10",
+    "segmentation-models-pytorch==0.3.3",
+    "grad-cam==1.5.4",
+    "albumentations==1.4.21",
+    "mmcv==2.1.0",
+    "mmengine==0.10.3",
+]
+notebook = ["jupyterlab", "ipykernel", "ipywidgets", "pillow"]
+segmentation = ["TotalSegmentator==2.8.0", "dicom2nifti>=2.4,<3"]
+
+[tool.setuptools.packages.find]
+include = ["c2_reg_cls*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

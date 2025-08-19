@@ -1,0 +1,8 @@
+{
+  "first_place": {
+    "weights_root": "weights/first_place"
+  },
+  "fourth_place": {
+    "weights_root": "weights/fourth_place"
+  }
+}

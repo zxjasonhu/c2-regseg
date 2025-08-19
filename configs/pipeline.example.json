@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "path_base": "project_root",
+  "inputs": {
+    "studies_csv": "data/studies.csv",
+    "study_id_column": "StudyInstanceUID",
+    "dicom_base": "data/dicom",
+    "dicom_relative_path": "{study_id}",
+    "scan_base": "data/scans",
+    "scan_relative_path": "{study_id}/ct.nii.gz",
+    "mask_base": "data/c2_masks",
+    "mask_relative_path": "{study_id}/vertebrae_C2.nii.gz",
+    "reference_masks": [
+      "resources/atlases/atlas_01_embedded.npz",
+      "resources/atlases/atlas_02_embedded.npz",
+      "resources/atlases/atlas_03_embedded.npz"
+    ],
+    "model_heatmap_dirs": [
+      "outputs/model_heatmaps/first_place",
+      "outputs/model_heatmaps/fourth_place"
+    ]
+  },
+  "outputs": {
+    "output_root": "outputs/pipeline",
+    "aggregated_heatmaps": "aggregated_heatmaps",
+    "registered": "registered",
+    "predictions": "predictions.csv",
+    "manifest": "run_manifest.json"
+  },
+  "c2_segmentation": {
+    "device": "gpu",
+    "force_split": false,
+    "verbose": false
+  },
+  "registration": {
+    "output_shape": [96, 96, 96],
+    "threshold": 0.3,
+    "fusion": "dice_weighted",
+    "transform_type": "SyNAggro",
+    "bfs_radius": 10,
+    "bfs_min_neighbors": 8
+  },
+  "prediction": {
+    "center_relative_threshold": 0.4,
+    "region_relative_threshold": 0.2,
+    "min_region_size": 120,
+    "max_regions": 4,
+    "level_ratio": 0.25,
+    "core_frac": 0.03
+  }
+}
